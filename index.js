@@ -159,3 +159,21 @@
 // };
 
 // onTime.sayName();
+
+// const object = {
+//   message: 'Hello, World!',
+//   getMessage: function () {
+//     const message = 'Hello, Earth!';
+//     return this.message;
+//   },
+// };
+// console.log(object.getMessage()); // What is logged?
+
+// const object = {
+//   message: 'Hello, World!',
+//   logMessage: function () {
+//     console.log(this.message); // What is logged?
+//   },
+// };
+
+// setTimeout(object.logMessage, 1000);
