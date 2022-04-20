@@ -1,103 +1,161 @@
-// Functional
-// const gov = 1.07;
-// const sanjay_tax = 100 ;
-// const sanjay_income = 1000;
-// const mukesh_tax = 100 ;
-// const mukesh_income = 1000;
+// const card = document.querySelector('#card');
 
-// const calcTax = ()=>{
-//  return income * tax;
-// }
-// const calcTax2 = ()=>{
-//  return income * tax;
-// }
-
-// Object literals
-// const tax = {
-//   tax: 0.07,
-//   price: 100,
-//   calcTax: function () {
-//     return this.price * this.tax;
+// const movie = {
+//   title: 'inception',
+//   year: 2015,
+//   rate: '9.9',
+//   actors: ['Leonardo DiCaprio', 'Jo seph Gordon-Levitt', 'Ellen Page'],
+//   isOld: function () {
+//     const currentYear = new Date().getFullYear();
+//     const difference = currentYear - this.year;
+//     console.log(
+//       `${this.title} was released in ${this.year} and is ${difference} years old.`
+//     );
 //   },
 // };
 
-// factory function
-// const tax = (income, tax) => {
-//   const gov = 0.07;
-//   return {
-//     tax,
-//     income,
-//     calcTax: function () {
-//       return this.income * this.tax + gov;
-//     },
-//   };
+// const movie2 = {
+//   title: 'star wars',
+//   year: 2015,
+//   rate: '9.9',
+//   actors: ['Leonardo DiCaprio', 'Jo seph Gordon-Levitt', 'Ellen Page'],
+//   isOld: function () {
+//     const currentYear = new Date().getFullYear();
+//     const difference = currentYear - this.year;
+//     console.log(
+//       `${this.title} was released in ${this.year} and is ${difference} years old.`
+//     );
+//   },
 // };
 
-// function tax (tax, income)  {
-//   const gov = 0.07;
-//   return {
-//     tax,
-//     income,
-//     calcTax: function () {
-//       return this.income * this.tax + gov;
-//     },
-//   };
-// };
+// card.innerHTML = `
+//     <h1>${movie.title}</h1>
+//     <h2>(${movie.year})</h2>
+//     <h3>${movie.rate}</h3>
+//     <ul>
+//         ${movie.actors.map((actor) => `<li>${actor}</li>`).join('')}
+//     </ul>
+// `;
 
-// const sanjay = Tax(500, 2);
-// const rajesh = Tax(2003, 2);
-// const murugan = Tax(100, 2);
+// card.style =
+//   'color: white; background-color: black; width: 500px; margin: 0 auto; padding: 20px;';
 
-//  this keyword //- Every function have a "this" keyword, which points to the object that owns the function / calling the function.
-// ! only normal function can access this keyword !
+//------------------------------------------------------
+
+// console.log(this);
+// const arr = () => console.log(this);
+
 // const obj = {
-//   name: 'sanjay',
+//   arw: () => console.log(this),
+//   nest: {
+//     arwNested: () => console.log(this),
+//   },
+// };
+
+// function A() {
+//   console.log(this);
+
+//   const B = () => console.log(this);
+// }
+
+// A();
+
+// const obj2 = {
+//   name: 'John',
+//   simple: function () {
+//     console.log('Check this for B', this);
+
+//     const B = () => {
+//       console.log('B', this);
+//     };
+
+//     B();
+//   },
+// };
+
+// obj2.simple();
+//------------------------------------------------------
+// const aboutMe = {
+//   name: 'Nathan',
+//   age: 30,
+//   country: 'USA',
+//   hobby: 'traveling',
+//   occupation: 'developer',
+
+//   nest: {
+//     type: 'Nest',
+//     simple: function () {
+//       console.log('Nathan Nest Simple', this);
+//     },
+
+//     arrow: () => {
+//       console.log('Nathan Nest Arrow', this);
+//     },
+//   },
+
+//   simple: function () {
+//     console.log('Nathan Simple', this);
+//   },
+
+//   arrow: () => {
+//     console.log('Nathan Arrow', this);
+//   },
+// };
+
+// aboutMe.simple();
+// aboutMe.nest.simple();
+
+// aboutMe.arrow();
+// aboutMe.nest.arrow();
+
+// console.log('aboutMe.thisIs', aboutMe.thisIs);
+
+// function simpleFun() {
+//   console.log('outside simpleFun', this);
+// }
+
+// const arrowFun = () => {
+//   console.log(' outside arrowFun', this);
+// };
+// simpleFun();
+// arrowFun();
+
+//------------------------------------------------------
+// function simpleFun() {
+//   console.log('outside simpleFun', this);
+// }
+
+// console.log('Checking this for arrowFun', this);
+// const arrowFun = () => {
+//   console.log(' outside arrowFun', this);
+// };
+
+// ---------------------------------------------------
+
+// setTimeout(() => {
+//   console.log('This is a timeout function');
+// }, 1000);
+
+// -------------------------------------
+
+// const onTime = {
+//   name: 'Nathan',
+
 //   sayName: function () {
-//     console.log(this.name);
+//     console.log(`My name is ${this.name}`);
+
+//     const that = this;
+
+//     function afterTimeout() {
+//       console.log(`My name is ${that.name} after 1second`);
+//     }
+
+//     const afterTimeout = () => {
+//       console.log(`My name is ${this.name} after 1second`);
+//     };
+
+//     setTimeout(afterTimeout, 200);
 //   },
 // };
 
-// obj.sayName();
-
-//` Constructor function
-// ! const Tax = (income, tax) => {}; // Arrow function not work
-// function Tax(income, tax) {
-//   this.income = income;
-//   this.tax = tax;
-//   this.calcTax = () => {
-//     return this.income * this.tax;
-//   };
-// }
-
-// const sanjay = new Tax(100, 0.07);
-
-// sanjay.calcTax();
-
-// const obj = new Object({
-//   name: 'sanjay',
-// }); // {}
-
-// const num = new Number(6); // 6
-// const str = new String('Hello'); // "Hello"
-// const arr = new Array(1, 2, 3); // [1,2,3]
-// const tax = new Tax(100, 0.07);
-
-// const obj = {
-//   name: 'sanjay',
-// }; // ` new Object({name : 'sanjay'})
-
-// const arr = [1, 2, 3]; // new Array()
-// console.log(arr); 
-
-// console.log(arr.hasOwnProperty('name')); 
-
-// function Array_(...args) {
-//   let arr = [args];
-//   this.push = function (value) {
-//     arr = [...arr, value];
-//   };
-// }
-
-
-
-// arr.push(4);
+// onTime.sayName();
