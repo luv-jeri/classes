@@ -1,103 +1,295 @@
-// Functional
-// const gov = 1.07;
-// const sanjay_tax = 100 ;
-// const sanjay_income = 1000;
-// const mukesh_tax = 100 ;
-// const mukesh_income = 1000;
+// we get array of objects from the REST API of movies
+const starWars = {
+  name: 'Star Wars',
+  releaseYear: 1977,
+  director: 'George Lucas',
+  producers: ['George Lucas', 'Rick McCallum'],
+  cinematography: ['Howard Deutch'],
+  stars: [
+    'Mark Hamill',
+    'Harrison Ford',
+    'Carrie Fisher',
+    'Peter Cushing',
+    'Anthony Daniels',
+  ],
+  getOld: function () {
+    const currentYear = new Date().getFullYear();
+    console.log(currentYear - this.releaseYear);
+  },
+};
 
-// const calcTax = ()=>{
-//  return income * tax;
-// }
-// const calcTax2 = ()=>{
-//  return income * tax;
-// }
+const halloween = {
+  name: 'Halloween',
+  releaseYear: 1978,
+  director: 'John Carpenter',
+  producers: ['John Carpenter'],
+  cinematography: ['John Carpenter'],
+  stars: [
+    'Donald Pleasence',
+    'Clarence Thomas',
+    'Danny Wood',
+    'Peter Cushing',
+    'Anthony Daniels',
+  ],
+  getOld: function () {
+    const currentYear = new Date().getFullYear();
+    console.log(currentYear - this.releaseYear);
+  },
+};
 
-// Object literals
-// const tax = {
-//   tax: 0.07,
-//   price: 100,
-//   calcTax: function () {
-//     return this.price * this.tax;
+const getOld = (year) => {
+  const currentYear = new Date().getFullYear();
+  console.log(currentYear - year);
+};
+getOld(starWars.releaseYear);
+
+starWars.getOld();
+halloween.getOld();
+
+//` trying with function
+//` A function that will take values as the parameters and will return the object
+//` also we can add the function in that object
+
+// const objectCreator = (name, age) => {
+//   const tempObject = {
+//     name: name,
+//     age: age,
+//   };
+//   return tempObject;
+// };
+
+// # it is a factory function that returns an object
+const objectCreator = (name, age) => {
+  name, age;
+};
+
+const objectOne = objectCreator('John', 20);
+const objectTwo = objectCreator('Jane', 21);
+
+console.log(objectOne);
+console.log(objectTwo);
+// ````````````````````````````````````````````````````````````````
+
+// ADVANCE FACTORY FUNCTION
+
+// const movieObjectCreator = (name, releaseYear, director) => {
+
+//   const getOld = function () {
+//     const currentYear = new Date().getFullYear();
+//     console.log(currentYear - releaseYear);
+//   };
+
+//   const tempObject = {
+//     name: name,
+//     releaseYear: releaseYear,
+//     director: director,
+//     getOld: getOld,
+//   };
+
+//   return tempObject;
+// };
+
+// const movieObjectCreator = (name, releaseYear, director) => ({
+//   name,
+//   releaseYear,
+//   director,
+//   getOld: function () {
+//     const currentYear = new Date().getFullYear();
+//     console.log(currentYear - releaseYear);
 //   },
-// };
+// });
 
-// factory function
-// const tax = (income, tax) => {
-//   const gov = 0.07;
-//   return {
-//     tax,
-//     income,
-//     calcTax: function () {
-//       return this.income * this.tax + gov;
-//     },
+// const movieObjectCreator_ = (movie) => {
+//   const getOld = function () {
+//     const currentYear = new Date().getFullYear();
+//     console.log(currentYear - releaseYear);
 //   };
-// };
 
-// function tax (tax, income)  {
-//   const gov = 0.07;
-//   return {
-//     tax,
-//     income,
-//     calcTax: function () {
-//       return this.income * this.tax + gov;
-//     },
+//   const tempObject = {
+//     ...movie,
+//     getOld: getOld,
 //   };
+
+//   return tempObject;
 // };
 
-// const sanjay = Tax(500, 2);
-// const rajesh = Tax(2003, 2);
-// const murugan = Tax(100, 2);
+// const starWars_ = movieObjectCreator('Star Wars', 1977, 'George Lucas');
+// const starWars__ = movieObjectCreator({
+//   name: 'Star Wars',
+//   releaseYear: 1977,
+//   director: 'George Lucas',
+// });
+// const halloween_ = movieObjectCreator('Halloween', 1978, 'John Carpenter');
 
-//  this keyword //- Every function have a "this" keyword, which points to the object that owns the function / calling the function.
-// ! only normal function can access this keyword !
-// const obj = {
-//   name: 'sanjay',
-//   sayName: function () {
-//     console.log(this.name);
+// console.log(starWars_);
+// console.log(halloween_);
+
+// starWars_.getOld();
+// halloween_.getOld();
+
+// array object of movies with name , releaseYear , director , producers , cinematography , stars
+
+gsap.to('#head', {
+  duration: 1,
+  x: 600,
+});
+
+const movieObjectCreator_ = (movie) => ({
+  ...movie,
+  getOld: function () {
+    const currentYear = new Date().getFullYear();
+    console.log(
+      `${movie.name} was released in ${currentYear - movie.releaseYear} years ago`
+    );
+  },
+  whoIsTheDirector: function () {
+    console.log(`${this.name} was directed by ${this.director}`);
+  },
+//   animate: function () {
+//     this.play = gsap.to(`#${this.name.split(' ')[0]}`, {
+//       duration: 1,
+//       x: 600,
+//     });
 //   },
-// };
+});
 
-// obj.sayName();
+const movies = [
+  {
+    name: 'Star Wars',
+    releaseYear: 1977,
+    director: 'George Lucas',
+    producers: ['George Lucas', 'Rick McCallum'],
+    cinematography: ['Howard Deutch'],
+    stars: [
+      'Mark Hamill',
+      'Harrison Ford',
+      'Carrie Fisher',
+      'Peter Cushing',
+      'Anthony Daniels',
+    ],
+  },
+  {
+    name: 'Halloween',
+    releaseYear: 1978,
+    director: 'John Carpenter',
+    producers: ['John Carpenter'],
+    cinematography: ['John Carpenter'],
+    stars: [
+      'Donald Pleasence',
+      'Clarence Thomas',
+      'Danny Wood',
+      'Peter Cushing',
+      'Anthony Daniels',
+    ],
+  },
+  {
+    name: 'The Empire Strikes Back',
+    releaseYear: 1980,
+    director: 'Irvin Kershner',
+    producers: ['Irvin Kershner'],
+    cinematography: ['Irvin Kershner'],
+    stars: [
+      'Mark Hamill',
+      'Harrison Ford',
+      'Carrie Fisher',
+      'Peter Cushing',
+      'Anthony Daniels',
+    ],
+  },
+  {
+    name: 'Return of the Jedi',
+    releaseYear: 1983,
+    director: 'Richard Marquand',
+    producers: ['Howard G. Kazanjian', 'George Lucas'],
+    cinematography: ['Howard Deutch'],
+    stars: [
+      'Mark Hamill',
+      'Harrison Ford',
+      'Carrie Fisher',
+      'Peter Cushing',
+      'Anthony Daniels',
+    ],
+  },
+  {
+    name: 'The Force Awakens',
+    releaseYear: 2015,
+    director: 'J. J. Abrams',
+    producers: ['J. J. Abrams', 'Kathleen Kennedy'],
+    cinematography: ['J. J. Abrams'],
+    stars: [
+      'Daisy Ridley',
+      'John Boyega',
+      ' Oscar Isaac',
+      'Kareem Abdul-Jabbar',
+      'Anakin Skywalker',
+    ],
+  },
+];
 
-//` Constructor function
-// ! const Tax = (income, tax) => {}; // Arrow function not work
-// function Tax(income, tax) {
-//   this.income = income;
-//   this.tax = tax;
-//   this.calcTax = () => {
-//     return this.income * this.tax;
-//   };
-// }
+const dataWithFunctions = movies.map((movie) => {
+  return movieObjectCreator_(movie);
+});
 
-// const sanjay = new Tax(100, 0.07);
+console.log(dataWithFunctions);
 
-// sanjay.calcTax();
+const wrap = document.querySelector('#wrap');
 
-// const obj = new Object({
-//   name: 'sanjay',
-// }); // {}
+dataWithFunctions.forEach((movie, index) => {
+  const card = document.createElement('div');
+  card.setAttribute('class', `${movie.name.split(' ')[0]}`);
+  card.classList.add('card');
 
-// const num = new Number(6); // 6
-// const str = new String('Hello'); // "Hello"
-// const arr = new Array(1, 2, 3); // [1,2,3]
-// const tax = new Tax(100, 0.07);
+  const h3 = document.createElement('h3');
+  h3.innerHTML = movie.name;
 
-// const obj = {
-//   name: 'sanjay',
-// }; // ` new Object({name : 'sanjay'})
+  const p = document.createElement('p');
+  p.innerHTML = movie.director;
 
-// const arr = [1, 2, 3]; // new Array()
-// console.log(arr); 
+  card.appendChild(h3);
+  card.appendChild(p);
 
-// console.log(arr.hasOwnProperty('name')); 
+  document.body.appendChild(card);
 
-// function Array_(...args) {
-//   let arr = [args];
-//   this.push = function (value) {
-//     arr = [...arr, value];
-//   };
-// }
+  card.addEventListener('click', () => {
+    movie.getOld();
+    movie.whoIsTheDirector();
+  });
 
+  const ul = document.createElement('ul');
 
+  movie.producers.forEach((producer) => {
+    const li = document.createElement('li');
+    li.innerHTML = producer;
+    ul.appendChild(li);
+  });
 
-// arr.push(4);
+  card.appendChild(ul);
+
+  const ul2 = document.createElement('ul');
+
+  movie.stars.forEach((star) => {
+    const li = document.createElement('li');
+    li.innerHTML = star;
+    ul2.appendChild(li);
+  });
+
+  card.appendChild(ul2);
+
+  const ul3 = document.createElement('ul');
+
+  movie.cinematography.forEach((cinematographer) => {
+    const li = document.createElement('li');
+    li.innerHTML = cinematographer;
+    ul3.appendChild(li);
+  });
+
+  card.appendChild(ul3);
+
+  card.style = `
+    background-color: #383838;
+    color : #c8c8c8;
+    border: 1px solid #035397;
+    margin: 10px;
+    padding: 10px;
+  `;
+});
