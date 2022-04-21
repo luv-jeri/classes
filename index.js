@@ -43,9 +43,6 @@ const getOld = (year) => {
 };
 getOld(starWars.releaseYear);
 
-starWars.getOld();
-halloween.getOld();
-
 //` trying with function
 //` A function that will take values as the parameters and will return the object
 //` also we can add the function in that object
@@ -66,8 +63,6 @@ const objectCreator = (name, age) => {
 const objectOne = objectCreator('John', 20);
 const objectTwo = objectCreator('Jane', 21);
 
-console.log(objectOne);
-console.log(objectTwo);
 // ````````````````````````````````````````````````````````````````
 
 // ADVANCE FACTORY FUNCTION
@@ -145,12 +140,12 @@ const movieObjectCreator_ = (movie) => ({
   whoIsTheDirector: function () {
     console.log(`${this.name} was directed by ${this.director}`);
   },
-//   animate: function () {
-//     this.play = gsap.to(`#${this.name.split(' ')[0]}`, {
-//       duration: 1,
-//       x: 600,
-//     });
-//   },
+  //   animate: function () {
+  //     this.play = gsap.to(`#${this.name.split(' ')[0]}`, {
+  //       duration: 1,
+  //       x: 600,
+  //     });
+  //   },
 });
 
 const movies = [
@@ -230,8 +225,6 @@ const dataWithFunctions = movies.map((movie) => {
   return movieObjectCreator_(movie);
 });
 
-console.log(dataWithFunctions);
-
 const wrap = document.querySelector('#wrap');
 
 dataWithFunctions.forEach((movie, index) => {
@@ -284,12 +277,71 @@ dataWithFunctions.forEach((movie, index) => {
   });
 
   card.appendChild(ul3);
+  card.style =
+    'color: white; background-color: black; width: 500px; margin: 0 auto; padding: 20px;';
 
-  card.style = `
-    background-color: #383838;
-    color : #c8c8c8;
-    border: 1px solid #035397;
-    margin: 10px;
-    padding: 10px;
-  `;
+  //   card.style = `
+  //     background-color: #383838;
+  //     color : #c8c8c8;
+  //     border: 1px solid #035397;
+  //     margin: 10px;
+  //     padding: 10px;
+  //   `;
 });
+
+function simpleObjectCreator(name, age) {
+  return {
+    name,
+    age,
+  };
+}
+
+const object = simpleObjectCreator('John', 20);
+const objectWithNew = new simpleObjectCreator('John', 20);
+
+// console.log('With New', objectWithNew);
+// console.log('Normal', object);
+
+function simpleObjectCreator(name, age) {
+  return {
+    name,
+    age,
+  };
+}
+const object_ = simpleObjectCreator('John', 20);
+
+function SimpleConstructor(name, age) {
+  this.name = name;
+  this.age = age;
+}
+const testNew = new SimpleConstructor('Jane', 20);
+
+console.log('testNew', testNew);
+
+function Movie(movie) {
+  this.name = movie.name;
+  this.releaseYear = movie.releaseYear;
+  this.director = movie.director;
+  this.producers = movie.producers;
+  this.cinematography = movie.cinematography;
+  this.stars = movie.stars;
+
+  this.getOld = function () {
+    const currentYear = new Date().getFullYear();
+    console.log(
+      `${this.name} was released in ${currentYear - this.releaseYear} years ago`
+    );
+  };
+
+  this.whoIsTheDirector = function () {
+    console.log(`${this.name} was directed by ${this.director}`);
+  };
+}
+
+const dataWithClass = movies.map((movie) => {
+  return new Movie(movie);
+});
+
+console.log(dataWithClass);
+
+const num = new Object();
