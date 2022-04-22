@@ -335,20 +335,22 @@ const dataWithClass = movies.map((movie) => {
 // }
 // const object_ = simpleObjectCreator('Jane', 21);
 
-function SimpleConstructor(name, age) {
-  this.name = name;
-  this.age = age;
-}
+// function SimpleConstructor(name, age) {
+//   this.name = name;
+//   this.age = age;
+// }
 
-SimpleConstructor.prototype.sayMyName = function () {
-  console.log(`My name is ${this.name}`);
-};
-SimpleConstructor.prototype.name = 'SANJAY';
+// SimpleConstructor.prototype.sayMyName = function () {
+//   console.log(`My name is ${this.name}`);
+// };
 
-const obj1 = new SimpleConstructor('Jane', 20);
+// SimpleConstructor.prototype.name = 'SANJAY';
 
-obj1.sayMyName();
+// const obj1 = new SimpleConstructor('Jane', 20);
 
+// obj1.sayMyName();
+
+// console.log(obj1)
 
 // console.log('simpleObjectCreator', simpleObjectCreator.prototype);
 // console.log('SimpleConstructor.prototype', SimpleConstructor.prototype);
@@ -356,10 +358,16 @@ obj1.sayMyName();
 // console.log(obj1.__proto__);
 // console.log(obj2.__proto__);
 
-// const House = function (room, size) {
-//   this.room = room;
-//   this.size = size;
-// };
+const House = function (room, size) {
+  this.room = room;
+  this.size = size;
+  this.child = {
+    name: 'John',
+    fun() {},
+  };
+};
+
+const myHome = new House(12, 'larger');
 
 // House.prototype.build = function () {
 //   console.log('Building a house.....🏛️');
@@ -373,3 +381,34 @@ obj1.sayMyName();
 // console.log(House.prototype);
 
 // console.log(suresh);
+
+function Vehicle(engine = 'V8', brakes = 'disc') {
+  this.engine = engine;
+  this.brakes = brakes;
+}
+
+function Bike(engine = '4 Cylinder', brakes = 'Dual Disc', fuelCapacity = '14 Litres') {
+  this.fuelCapacity = fuelCapacity;
+}
+
+Bike.prototype.run = function () {
+  console.log('Bike is Running');
+};
+
+Bike.prototype.__proto__ = Vehicle.prototype;
+
+function Car(engine = '4 Cylinder', brakes = 'Dual Disc', type = 'SUV') {
+  this.type = type;
+}
+
+const car = new Car();
+
+const arr = [1, 4]; // Array.prototype
+const obj = {}; // Object.prototype
+
+console.log(arr.__proto__);
+console.log(obj.hasOwnProperty());
+
+
+
+
