@@ -302,22 +302,6 @@ const objectWithNew = new simpleObjectCreator('John', 20);
 // console.log('With New', objectWithNew);
 // console.log('Normal', object);
 
-function simpleObjectCreator(name, age) {
-  return {
-    name,
-    age,
-  };
-}
-const object_ = simpleObjectCreator('John', 20);
-
-function SimpleConstructor(name, age) {
-  this.name = name;
-  this.age = age;
-}
-const testNew = new SimpleConstructor('Jane', 20);
-
-console.log('testNew', testNew);
-
 function Movie(movie) {
   this.name = movie.name;
   this.releaseYear = movie.releaseYear;
@@ -325,23 +309,67 @@ function Movie(movie) {
   this.producers = movie.producers;
   this.cinematography = movie.cinematography;
   this.stars = movie.stars;
-
-  this.getOld = function () {
-    const currentYear = new Date().getFullYear();
-    console.log(
-      `${this.name} was released in ${currentYear - this.releaseYear} years ago`
-    );
-  };
-
-  this.whoIsTheDirector = function () {
-    console.log(`${this.name} was directed by ${this.director}`);
-  };
 }
+
+Movie.prototype.getOld = function () {
+  const currentYear = new Date().getFullYear();
+  console.log(`${this.name} was released in ${currentYear - this.releaseYear} years ago`);
+};
+
+Movie.prototype.whoIsTheDirector = function () {
+  console.log(`${this.name} was directed by ${this.director}`);
+};
 
 const dataWithClass = movies.map((movie) => {
   return new Movie(movie);
 });
 
-console.log(dataWithClass);
+// function simpleObjectCreator(name, age) {
+//   return {
+//     name,
+//     age,
+//     saidMyName: function () {
+//       console.log(`${this.name} said my name`);
+//     },
+//   };
+// }
+// const object_ = simpleObjectCreator('Jane', 21);
 
-const num = new Object();
+function SimpleConstructor(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+SimpleConstructor.prototype.sayMyName = function () {
+  console.log(`My name is ${this.name}`);
+};
+SimpleConstructor.prototype.name = 'SANJAY';
+
+const obj1 = new SimpleConstructor('Jane', 20);
+
+obj1.sayMyName();
+
+
+// console.log('simpleObjectCreator', simpleObjectCreator.prototype);
+// console.log('SimpleConstructor.prototype', SimpleConstructor.prototype);
+
+// console.log(obj1.__proto__);
+// console.log(obj2.__proto__);
+
+// const House = function (room, size) {
+//   this.room = room;
+//   this.size = size;
+// };
+
+// House.prototype.build = function () {
+//   console.log('Building a house.....🏛️');
+// };
+
+// const mukesh = new House(5, 'big');
+// console.log(mukesh.__proto__.build());
+
+// const suresh = new House(3, 'small');
+
+// console.log(House.prototype);
+
+// console.log(suresh);
