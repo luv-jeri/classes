@@ -1,414 +1,88 @@
-// we get array of objects from the REST API of movies
-const starWars = {
-  name: 'Star Wars',
-  releaseYear: 1977,
-  director: 'George Lucas',
-  producers: ['George Lucas', 'Rick McCallum'],
-  cinematography: ['Howard Deutch'],
-  stars: [
-    'Mark Hamill',
-    'Harrison Ford',
-    'Carrie Fisher',
-    'Peter Cushing',
-    'Anthony Daniels',
-  ],
-  getOld: function () {
-    const currentYear = new Date().getFullYear();
-    console.log(currentYear - this.releaseYear);
-  },
-};
+// function fun() {
+//   console.log(this);
+//   console.log('Hello World');
+// }
 
-const halloween = {
-  name: 'Halloween',
-  releaseYear: 1978,
-  director: 'John Carpenter',
-  producers: ['John Carpenter'],
-  cinematography: ['John Carpenter'],
-  stars: [
-    'Donald Pleasence',
-    'Clarence Thomas',
-    'Danny Wood',
-    'Peter Cushing',
-    'Anthony Daniels',
-  ],
-  getOld: function () {
-    const currentYear = new Date().getFullYear();
-    console.log(currentYear - this.releaseYear);
-  },
-};
+// // window.fun();
 
-const getOld = (year) => {
-  const currentYear = new Date().getFullYear();
-  console.log(currentYear - year);
-};
-getOld(starWars.releaseYear);
+// const me = {
+//   name: 'John',
+//   sayMyName: function () {
+//     console.log('SAY MY NAME', this);
 
-//` trying with function
-//` A function that will take values as the parameters and will return the object
-//` also we can add the function in that object
+//     function ok() {
+//       console.log('OK', this);
+//     }
 
-// const objectCreator = (name, age) => {
-//   const tempObject = {
-//     name: name,
-//     age: age,
-//   };
-//   return tempObject;
-// };
-
-// # it is a factory function that returns an object
-const objectCreator = (name, age) => {
-  name, age;
-};
-
-const objectOne = objectCreator('John', 20);
-const objectTwo = objectCreator('Jane', 21);
-
-// ````````````````````````````````````````````````````````````````
-
-// ADVANCE FACTORY FUNCTION
-
-// const movieObjectCreator = (name, releaseYear, director) => {
-
-//   const getOld = function () {
-//     const currentYear = new Date().getFullYear();
-//     console.log(currentYear - releaseYear);
-//   };
-
-//   const tempObject = {
-//     name: name,
-//     releaseYear: releaseYear,
-//     director: director,
-//     getOld: getOld,
-//   };
-
-//   return tempObject;
-// };
-
-// const movieObjectCreator = (name, releaseYear, director) => ({
-//   name,
-//   releaseYear,
-//   director,
-//   getOld: function () {
-//     const currentYear = new Date().getFullYear();
-//     console.log(currentYear - releaseYear);
+//     ok();
 //   },
-// });
-
-// const movieObjectCreator_ = (movie) => {
-//   const getOld = function () {
-//     const currentYear = new Date().getFullYear();
-//     console.log(currentYear - releaseYear);
-//   };
-
-//   const tempObject = {
-//     ...movie,
-//     getOld: getOld,
-//   };
-
-//   return tempObject;
 // };
 
-// const starWars_ = movieObjectCreator('Star Wars', 1977, 'George Lucas');
-// const starWars__ = movieObjectCreator({
-//   name: 'Star Wars',
-//   releaseYear: 1977,
-//   director: 'George Lucas',
-// });
-// const halloween_ = movieObjectCreator('Halloween', 1978, 'John Carpenter');
+// // me.sayMyName();
 
-// console.log(starWars_);
-// console.log(halloween_);
+// // setTimeout(function () {
+// //   console.log('TIMER', this);
+// // }, 1000);
 
-// starWars_.getOld();
-// halloween_.getOld();
+// const obj = {
+//   name: 'John',
+//   thisIS: this,
+//   sayMyName: () => {
+//     console.log('SAY MY NAME', this);
+//   },
+// };
 
-// array object of movies with name , releaseYear , director , producers , cinematography , stars
+// // obj.sayMyName();
 
-gsap.to('#head', {
-  duration: 1,
-  x: 600,
-});
+// // console.log('THIS', obj.thisIS);
 
-const movieObjectCreator_ = (movie) => ({
-  ...movie,
-  getOld: function () {
-    const currentYear = new Date().getFullYear();
-    console.log(
-      `${movie.name} was released in ${currentYear - movie.releaseYear} years ago`
-    );
-  },
-  whoIsTheDirector: function () {
-    console.log(`${this.name} was directed by ${this.director}`);
-  },
-  //   animate: function () {
-  //     this.play = gsap.to(`#${this.name.split(' ')[0]}`, {
-  //       duration: 1,
-  //       x: 600,
-  //     });
-  //   },
-});
+// const final = {
+//   name: 'John',
+//   sayMyName: function () {
+//     console.log('SAY MY NAME', this);
+//     const ok = () => {
+//       console.log('OK', this);
+//     };
+//     ok();
+//   },
+// };
 
-const movies = [
-  {
-    name: 'Star Wars',
-    releaseYear: 1977,
-    director: 'George Lucas',
-    producers: ['George Lucas', 'Rick McCallum'],
-    cinematography: ['Howard Deutch'],
-    stars: [
-      'Mark Hamill',
-      'Harrison Ford',
-      'Carrie Fisher',
-      'Peter Cushing',
-      'Anthony Daniels',
-    ],
-  },
-  {
-    name: 'Halloween',
-    releaseYear: 1978,
-    director: 'John Carpenter',
-    producers: ['John Carpenter'],
-    cinematography: ['John Carpenter'],
-    stars: [
-      'Donald Pleasence',
-      'Clarence Thomas',
-      'Danny Wood',
-      'Peter Cushing',
-      'Anthony Daniels',
-    ],
-  },
-  {
-    name: 'The Empire Strikes Back',
-    releaseYear: 1980,
-    director: 'Irvin Kershner',
-    producers: ['Irvin Kershner'],
-    cinematography: ['Irvin Kershner'],
-    stars: [
-      'Mark Hamill',
-      'Harrison Ford',
-      'Carrie Fisher',
-      'Peter Cushing',
-      'Anthony Daniels',
-    ],
-  },
-  {
-    name: 'Return of the Jedi',
-    releaseYear: 1983,
-    director: 'Richard Marquand',
-    producers: ['Howard G. Kazanjian', 'George Lucas'],
-    cinematography: ['Howard Deutch'],
-    stars: [
-      'Mark Hamill',
-      'Harrison Ford',
-      'Carrie Fisher',
-      'Peter Cushing',
-      'Anthony Daniels',
-    ],
-  },
-  {
-    name: 'The Force Awakens',
-    releaseYear: 2015,
-    director: 'J. J. Abrams',
-    producers: ['J. J. Abrams', 'Kathleen Kennedy'],
-    cinematography: ['J. J. Abrams'],
-    stars: [
-      'Daisy Ridley',
-      'John Boyega',
-      ' Oscar Isaac',
-      'Kareem Abdul-Jabbar',
-      'Anakin Skywalker',
-    ],
-  },
-];
+// // final.sayMyName();
 
-const dataWithFunctions = movies.map((movie) => {
-  return movieObjectCreator_(movie);
-});
-
-const wrap = document.querySelector('#wrap');
-
-dataWithFunctions.forEach((movie, index) => {
-  const card = document.createElement('div');
-  card.setAttribute('class', `${movie.name.split(' ')[0]}`);
-  card.classList.add('card');
-
-  const h3 = document.createElement('h3');
-  h3.innerHTML = movie.name;
-
-  const p = document.createElement('p');
-  p.innerHTML = movie.director;
-
-  card.appendChild(h3);
-  card.appendChild(p);
-
-  document.body.appendChild(card);
-
-  card.addEventListener('click', () => {
-    movie.getOld();
-    movie.whoIsTheDirector();
-  });
-
-  const ul = document.createElement('ul');
-
-  movie.producers.forEach((producer) => {
-    const li = document.createElement('li');
-    li.innerHTML = producer;
-    ul.appendChild(li);
-  });
-
-  card.appendChild(ul);
-
-  const ul2 = document.createElement('ul');
-
-  movie.stars.forEach((star) => {
-    const li = document.createElement('li');
-    li.innerHTML = star;
-    ul2.appendChild(li);
-  });
-
-  card.appendChild(ul2);
-
-  const ul3 = document.createElement('ul');
-
-  movie.cinematography.forEach((cinematographer) => {
-    const li = document.createElement('li');
-    li.innerHTML = cinematographer;
-    ul3.appendChild(li);
-  });
-
-  card.appendChild(ul3);
-  card.style =
-    'color: white; background-color: black; width: 500px; margin: 0 auto; padding: 20px;';
-
-  //   card.style = `
-  //     background-color: #383838;
-  //     color : #c8c8c8;
-  //     border: 1px solid #035397;
-  //     margin: 10px;
-  //     padding: 10px;
-  //   `;
-});
-
-function simpleObjectCreator(name, age) {
-  return {
-    name,
-    age,
-  };
-}
-
-const object = simpleObjectCreator('John', 20);
-const objectWithNew = new simpleObjectCreator('John', 20);
-
-// console.log('With New', objectWithNew);
-// console.log('Normal', object);
-
-function Movie(movie) {
-  this.name = movie.name;
-  this.releaseYear = movie.releaseYear;
-  this.director = movie.director;
-  this.producers = movie.producers;
-  this.cinematography = movie.cinematography;
-  this.stars = movie.stars;
-}
-
-Movie.prototype.getOld = function () {
-  const currentYear = new Date().getFullYear();
-  console.log(`${this.name} was released in ${currentYear - this.releaseYear} years ago`);
-};
-
-Movie.prototype.whoIsTheDirector = function () {
-  console.log(`${this.name} was directed by ${this.director}`);
-};
-
-const dataWithClass = movies.map((movie) => {
-  return new Movie(movie);
-});
-
-// function simpleObjectCreator(name, age) {
-//   return {
-//     name,
-//     age,
-//     saidMyName: function () {
-//       console.log(`${this.name} said my name`);
-//     },
-//   };
-// }
-// const object_ = simpleObjectCreator('Jane', 21);
-
-// function SimpleConstructor(name, age) {
-//   this.name = name;
-//   this.age = age;
+// function ok1() {
+//   console.log('ARR', this);
 // }
 
-// SimpleConstructor.prototype.sayMyName = function () {
-//   console.log(`My name is ${this.name}`);
+// function ok2() {
+//   console.log('ARR', this);
+// }
+
+// const arr = [ok1, ok2];
+
+// arr[1]()
+
+// const object = {
+//   message: 'Hello, World!',
+//   getMessage: function () {
+//     const message = 'Hello, Earth!';
+//     console.log(this.message);
+//   },
+// };
+// object.getMessage();
+
+// var length = 4;
+
+// function callback() {
+//   console.log(this.length); 
+// }
+
+// const object = {
+//   length: 5,
+//   method : function() {
+//     arguments[0]();
+//   },
 // };
 
-// SimpleConstructor.prototype.name = 'SANJAY';
-
-// const obj1 = new SimpleConstructor('Jane', 20);
-
-// obj1.sayMyName();
-
-// console.log(obj1)
-
-// console.log('simpleObjectCreator', simpleObjectCreator.prototype);
-// console.log('SimpleConstructor.prototype', SimpleConstructor.prototype);
-
-// console.log(obj1.__proto__);
-// console.log(obj2.__proto__);
-
-const House = function (room, size) {
-  this.room = room;
-  this.size = size;
-  this.child = {
-    name: 'John',
-    fun() {},
-  };
-};
-
-const myHome = new House(12, 'larger');
-
-// House.prototype.build = function () {
-//   console.log('Building a house.....🏛️');
-// };
-
-// const mukesh = new House(5, 'big');
-// console.log(mukesh.__proto__.build());
-
-// const suresh = new House(3, 'small');
-
-// console.log(House.prototype);
-
-// console.log(suresh);
-
-function Vehicle(engine = 'V8', brakes = 'disc') {
-  this.engine = engine;
-  this.brakes = brakes;
-}
-
-function Bike(engine = '4 Cylinder', brakes = 'Dual Disc', fuelCapacity = '14 Litres') {
-  this.fuelCapacity = fuelCapacity;
-}
-
-Bike.prototype.run = function () {
-  console.log('Bike is Running');
-};
-
-Bike.prototype.__proto__ = Vehicle.prototype;
-
-function Car(engine = '4 Cylinder', brakes = 'Dual Disc', type = 'SUV') {
-  this.type = type;
-}
-
-const car = new Car();
-
-const arr = [1, 4]; // Array.prototype
-const obj = {}; // Object.prototype
-
-console.log(arr.__proto__);
-console.log(obj.hasOwnProperty());
-
-
+// object.method(callback, 1, 2);
 
 
