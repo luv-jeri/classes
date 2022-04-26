@@ -87,9 +87,9 @@
 // }; // ` new Object({name : 'sanjay'})
 
 // const arr = [1, 2, 3]; // new Array()
-// console.log(arr); 
+// console.log(arr);
 
-// console.log(arr.hasOwnProperty('name')); 
+// console.log(arr.hasOwnProperty('name'));
 
 // function Array_(...args) {
 //   let arr = [args];
@@ -98,6 +98,87 @@
 //   };
 // }
 
-
-
 // arr.push(4);
+
+// const smallGen = (name, age) => {
+//   return {
+//     name,
+//     age,
+//     sayName: function () {
+//       console.log(this.name);
+//     },
+//   };
+// };
+
+// const sanjay = smallGen('sanjay', 20);
+// const rajesh = smallGen('rajesh', 30);
+
+// console.log(sanjay);
+// console.log(rajesh);
+
+// function SmallGen(income, tax) {
+//   this.income = income;
+//   this.tax = tax;
+// }
+
+// const sanjay = new SmallGen(100, 0.07);
+// const date = new Date();
+
+// const obk = {}
+
+// const arr = []
+
+// console.log(sanjay);
+// console.log(obk);
+// console.log(arr);
+// console.log(date);
+
+// const arr = new Array(1, 4, 4, 6, 7);
+// const num = new Number(45);
+// const str = new String('Hello');
+// const obj = new Object({ name: 'John' });
+
+// Object.prototype.custom = 'i am, custom';
+
+// // console.log(Object.prototype.__proto__);
+
+// function Passenger(stop, name, seat) {
+//   this.stop = stop;
+//   this.name = name;
+//   this.seat = seat;
+// }
+
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// const num = 10
+
+// function fun(){}
+
+// console.log(arr.length , arr.__proto__.length);
+
+// console.log(fun.custom, fun);
+
+// Passenger.prototype.iam = 'passenger';
+
+// const sanjay = new Passenger('MIG4', 'sanjay', 'A2');
+
+// console.log('1', sanjay);
+// console.log('2', sanjay.__proto__.iam, sanjay.iam);
+// console.log(sanjay.__proto__.__proto__.custom, sanjay.custom);
+
+// Passenger.prototype = Humans.prototype;
+
+// console.log('Humans.prototype', Humans.prototype);
+
+// console.log(arr)
+// console.log(num)
+// console.log(str)
+// console.log(obj)
+
+// console.log('Object', Object.prototype);
+// Object.prototype.custom = 'i am, custom';
+// Array.prototype.arr = 'i am, custom arr';
+// // console.log(sanjay);
+
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// console.log(arr.__proto__);
