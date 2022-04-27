@@ -1,25 +1,24 @@
-// Contractor function: index.js
-
-function Passenger(name, stop, seat, destination) {
-  this.name = name;
-  this.stop = stop;
-  this.seat = seat;
-  this.destination = destination;
-}
-
-//# Happened in the background
-// Passenger.prototype = {
-//   constructor: Passenger,
-// };
-
-Passenger.prototype.seatNumber = function () {
-  console.log(this.seat);
+Array.prototype.alertLength = function (callback) {
+  alert(this.length);
 };
 
-console.log('Passenger.prototype', Passenger.prototype);
+const test = [1, 2, 3, 4, 5];
 
-const sanjay = new Passenger('Sanjay', 'A', 'A1', 'B');
-const jane = new Passenger('Jane', 'B', 'B2', 'C');
+test.alertLength();
 
-sanjay.seatNumber()
-jane.seatNumber()
+function School(name, students, teachers) {
+  this.name = name;
+  this.students = students;
+  this.teachers = teachers;
+}
+
+School.prototype.addStudent = function (student) {
+  this.students.push(student);
+};
+
+School.prototype.uniform = 'Uniform';
+
+const joseph = new School('Joseph', ['Joe', 'Jill', 'Jack'], ['Mr. Smith', 'Mrs. Smith']);
+joseph.addStudent('Jill');
+
+console.log(joseph.hasOwnProperty('name'));
