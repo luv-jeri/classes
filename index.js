@@ -231,7 +231,14 @@ Object.assign(Instructor.prototype, mixin);
 
 sanjay.sayHello();
 sanjay.incExp();
+
 sanjay.GROW();
 sanjay.markAttendance();
 
-console.log(sanjay);
+const song = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+
+document.getElementById('play').addEventListener('click', () => {
+  song.play();
+});
+
+
